@@ -1,6 +1,5 @@
-# 🚀 Welcome to your new awesome project!
-
-This project has been created using **webpack-cli**, you can now run
+# 🚀 # SpaceX-launches-react
+React-App that shows all successful SpaceX launches for 2015-2019
 
 ```
 npm run build
