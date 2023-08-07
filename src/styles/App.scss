@@ -55,18 +55,20 @@
   .card {
     width: 70%;
   }
+
+  .app {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 760px) {
   .card {
     width: 90%;
   }
-}
 
-@media screen and (max-width: 760px) {
-    .card {
-        width: 90%;
-    }
+  .app {
+    width: 100%;
+  }
 }
 
 
