@@ -15,15 +15,15 @@
   border-radius: 12px;
   border-color: transparent;
   box-shadow: $boxShadow;
-  
-  &__header {
-    @include flexCenter;
+}
 
-    flex-direction: column;
-    text-align: center;
-    border-bottom: 1px solid $border;
-    width: 100%;
-  }
+.header {
+  @include flexCenter;
+
+  flex-direction: column;
+  text-align: center;
+  border-bottom: 1px solid $border;
+  width: 100%;
 }
   
 .launches {

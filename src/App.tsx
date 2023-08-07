@@ -75,7 +75,7 @@ export const App = () => {
 
 	return (
 		<div className='app'>
-			<header className='app__header'>
+			<header className='header'>
 				<Typography.Title level={3}>
 					Successful SpaceX launches for 2015-2019
 				</Typography.Title>
