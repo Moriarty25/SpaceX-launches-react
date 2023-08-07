@@ -16,14 +16,12 @@ export const App = () => {
 	const parentRef = useRef(null);
 	const childRef = useRef(null);
 	const dispatch = useAppDispatch();
-	
-	// const useGetPokemonByNameQuery = pokemonApi.endpoints.getPokemonByName.useQuery
+
 	const launchesHandler = () => {
 		//if (!data?.nextPage) return
 
 		setPage(prev => prev + 1);
-		
-		
+
 		// setLaunch(prev => [...prev, data])
 	};
 

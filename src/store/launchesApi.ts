@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ILaunch, ILaunchData } from 'src/models/launchTypes';
+import { IRocketData } from 'src/models/rocketTypes';
 
 export const launchesApi = createApi({
 	reducerPath: 'launchesApi',
@@ -40,7 +41,7 @@ export const launchesApi = createApi({
 				return currentArg !== previousArg;
 			},
 		}),
-		getRocket: build.query({
+		getRocket: build.query<IRocketData, string>({
 			query: id => `/rockets/${id}`,
 		}),
 	}),
