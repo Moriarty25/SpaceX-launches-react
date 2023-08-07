@@ -7,9 +7,9 @@ export function useScroll(
 ) {
 	const observer = useRef<IntersectionObserver>();
 
-    const memoizedCallback = useCallback(() => {
-        callback();
-      }, []);
+	const memoizedCallback = useCallback(() => {
+		callback();
+	}, []);
 
 	useEffect(() => {
 		const options = {
@@ -19,18 +19,12 @@ export function useScroll(
 		};
 
 		observer.current = new IntersectionObserver(([target]) => {
-            console.log(target.isIntersecting);
-            
 			if (target.isIntersecting) {
 				memoizedCallback();
-                //callback()
-                console.log('interspected');
-                
 			}
-
 		}, options);
-        
-		 observer.current.observe(childRef.current);
+
+		observer.current.observe(childRef.current);
 
 		return function () {
 			observer.current.unobserve(childRef.current);
