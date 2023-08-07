@@ -4,15 +4,13 @@ import './Launch.scss';
 import { useGetRocketQuery } from '../../store';
 import { getRandomImage } from '../../utils/getters';
 import Meta from 'antd/es/card/Meta';
+import { ILaunch } from 'src/models/launchTypes';
 
-type TLaunchProps = {
-	name: string;
+interface ILaunchProps extends Omit<ILaunch, 'success' | 'date_utc' | 'id'> {
 	date: Date;
-	details: string | null;
-	rocket?: string;
-};
+}
 
-export const Launch: FC<TLaunchProps> = ({ name, date, details, rocket }) => {
+export const Launch: FC<ILaunchProps> = ({ name, date, details, rocket }) => {
 	const { data } = useGetRocketQuery(rocket);
 	const dateUtc = new Date(date).toUTCString();
 	const sizeFlicrArr: number = data?.flickr_images.length - 1;

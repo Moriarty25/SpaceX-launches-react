@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { ILaunch, ILaunchData } from 'src/models/launchTypes';
 
 export const launchesApi = createApi({
 	reducerPath: 'launchesApi',
 	baseQuery: fetchBaseQuery({ baseUrl: 'https://api.spacexdata.com/v4' }),
 	endpoints: build => ({
-		getLaunches: build.query<any, { page: number; sort: 'ascending' | 'descending' }>({
+		getLaunches: build.query<ILaunchData, { page: number; sort: 'ascending' | 'descending' }>({
 			query: params => ({
 				url: `/launches/query`,
 				method: 'POST',
@@ -26,10 +27,8 @@ export const launchesApi = createApi({
 			serializeQueryArgs: ({ endpointName }) => {
 				return endpointName;
 			},
-			transformResponse: (response: any, meta, arg) => {
-				const onlySuccessfulLaunches = response.docs.filter(
-					(launch: { success: boolean }) => launch.success,
-				);
+			transformResponse: (response: ILaunchData, meta, arg) => {
+				const onlySuccessfulLaunches = response.docs.filter(launch => launch.success);
 				return { ...response, docs: onlySuccessfulLaunches };
 			},
 			merge: (currentCache, newItems) => {
@@ -38,7 +37,6 @@ export const launchesApi = createApi({
 				}
 			},
 			forceRefetch({ currentArg, previousArg }) {
-				// if (currentArg.sort !== previousArg.sort) return false
 				return currentArg !== previousArg;
 			},
 		}),

@@ -1,26 +1,29 @@
 import { useEffect, useRef, useState } from 'react';
-import { Launch } from './components/Launch';
 import { launchesApi, useGetLaunchesQuery } from './store';
 import { Button, Dropdown, Space, Spin, Typography, message } from 'antd';
 import { SortAscendingOutlined, SortDescendingOutlined } from '@ant-design/icons';
-import { useScroll } from './hooks/useScroll';
 import type { MenuProps } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from './hooks/redux';
+import { useScroll } from './hooks/useScroll';
+import { Launch } from './components/Launch';
+import { ILaunch } from './models/launchTypes';
 
 export const App = () => {
-	const dispatch = useDispatch();
 	const [launch, setLaunch] = useState(false);
 	const [page, setPage] = useState(0);
 	const [sort, setSort] = useState<'ascending' | 'descending'>('descending');
 	const { data, currentData, isLoading, isFetching } = useGetLaunchesQuery({ page, sort });
 	const parentRef = useRef(null);
 	const childRef = useRef(null);
-
+	const dispatch = useAppDispatch();
+	
+	// const useGetPokemonByNameQuery = pokemonApi.endpoints.getPokemonByName.useQuery
 	const launchesHandler = () => {
 		//if (!data?.nextPage) return
 
 		setPage(prev => prev + 1);
-
+		
+		
 		// setLaunch(prev => [...prev, data])
 	};
 
@@ -38,7 +41,7 @@ export const App = () => {
 	}, [data]);
 
 	const launchesElements = data ? (
-		data.docs.map((launch: any) => (
+		data.docs.map((launch: ILaunch) => (
 			<Launch
 				key={launch.id}
 				name={launch.name}
