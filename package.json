@@ -30,6 +30,7 @@
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.5.3",
     "@types/react-dom": "^18.2.7",
+    "@types/react-redux": "7.1.25",
     "@webpack-cli/generators": "^3.0.7",
     "babel-jest": "^29.6.2",
     "css-loader": "^6.8.1",
@@ -52,7 +53,6 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.5",
     "@reduxjs/toolkit": "1.9.5",
-    "@types/react-redux": "7.1.25",
     "antd": "^5.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -66,8 +66,7 @@
       "^.+\\.ts?$": "ts-jest"
     },
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|webp|svg)$": "identity-obj-proxy",
-      "\\.(css|scss)$": "<rootDir>/.jest/identity-obj-proxy-esm.js"
+      "\\.(jpg|jpeg|png|gif|webp|svg|css|scss)$": "identity-obj-proxy"
     },
     "modulePathIgnorePatterns": [
       "<rootDir>/dist/",
