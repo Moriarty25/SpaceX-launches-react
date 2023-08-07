@@ -80,9 +80,13 @@ export const App = () => {
 				{isLoading ? <Loader /> : launchesElements}
 				<div ref={childRef}>
 					{isFetching ? <Spin style={{ padding: 20 }} /> : <>&nbsp;</>}
-					{isError && <Empty description={
-						<Typography.Text strong>Something went wrong</Typography.Text>
-						} />}
+					{isError && (
+						<Empty
+							description={
+								<Typography.Text strong>Something went wrong</Typography.Text>
+							}
+						/>
+					)}
 				</div>
 			</main>
 		</div>
