@@ -6,12 +6,13 @@ import type { MenuProps } from 'antd';
 import { useAppDispatch } from './hooks/redux';
 import { useScroll } from './hooks/useScroll';
 import { Launch } from './components/Launch';
+import { Loader } from './components/Loader';
 import { ILaunch } from './models/launchTypes';
 
 export const App = () => {
 	const [page, setPage] = useState(0);
 	const [sort, setSort] = useState<'ascending' | 'descending'>('descending');
-	const { data, isLoading } = useGetLaunchesQuery({ page, sort });
+	const { data, isLoading, isFetching } = useGetLaunchesQuery({ page, sort });
 	const parentRef = useRef(null);
 	const childRef = useRef(null);
 	const dispatch = useAppDispatch();
@@ -87,9 +88,9 @@ export const App = () => {
 				</div>
 			</header>
 			<main className='launches' ref={parentRef}>
-				{isLoading ? <Spin size='large' /> : launchesElements}
-				<div ref={childRef} style={{ height: 50, color: 'black' }}>
-					...
+				{isLoading ? <Loader /> : launchesElements}
+				<div ref={childRef}>
+					{isFetching ? <Spin style={{ padding: 20 }} /> : <>&nbsp;</>}
 				</div>
 			</main>
 		</div>
