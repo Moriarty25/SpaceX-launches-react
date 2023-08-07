@@ -17,10 +17,7 @@ export const Launch: FC<ILaunchProps> = ({ name, date, details, rocket }) => {
 
 	return (
 		<>
-			<Card
-				// hoverable
-				style={{ width: '50%', marginTop: '30px' }}
-				cover={<Slider alt='spacecraft' images={images} />}>
+			<Card className='card' cover={<Slider alt='spacecraft' images={images} />}>
 				<Meta title={name} description={details ?? 'No details about this mission'} />
 				<Space size={[0, 8]} wrap style={{ paddingTop: 10 }}>
 					<Tag>{dateUtc}</Tag>
