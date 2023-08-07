@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { launchesApi, useGetLaunchesQuery } from './store';
-import { Button, Dropdown, Space, Spin, Typography, message } from 'antd';
+import { Button, Dropdown, Empty, Space, Spin, Typography, message } from 'antd';
 import { SortAscendingOutlined, SortDescendingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { useAppDispatch } from './hooks/redux';
@@ -13,7 +13,7 @@ import './styles/App.scss';
 export const App = () => {
 	const [page, setPage] = useState(0);
 	const [sort, setSort] = useState<'ascending' | 'descending'>('descending');
-	const { data, isLoading, isFetching } = useGetLaunchesQuery({ page, sort });
+	const { data, isLoading, isFetching, isError } = useGetLaunchesQuery({ page, sort });
 	const parentRef = useRef(null);
 	const childRef = useRef(null);
 	const dispatch = useAppDispatch();
@@ -23,17 +23,8 @@ export const App = () => {
 		setPage(prev => prev + 1);
 	}
 
-	useEffect(() => {
-		if (data) {
-			// const s = data.docs.filter((launch: { success: boolean; }) => launch.success)
-			const s =
-				new Date(data?.docs[length]?.date_utc).getUTCFullYear() -
-				new Date(data?.docs[0]?.date_utc).getUTCFullYear();
-			console.log(s, 'data');
-		}
-	}, [data]);
-
-	const launchesElements = data ? (
+	const launchesElements =
+		data &&
 		data.docs.map((launch: ILaunch) => (
 			<Launch
 				key={launch.id}
@@ -42,10 +33,7 @@ export const App = () => {
 				details={launch.details}
 				rocket={launch.rocket}
 			/>
-		))
-	) : (
-		<div>loading</div>
-	);
+		));
 
 	const items: MenuProps['items'] = [
 		{
@@ -92,6 +80,7 @@ export const App = () => {
 				{isLoading ? <Loader /> : launchesElements}
 				<div ref={childRef}>
 					{isFetching ? <Spin style={{ padding: 20 }} /> : <>&nbsp;</>}
+					{isError && <Empty description={'Something went wrong'} />}
 				</div>
 			</main>
 		</div>
