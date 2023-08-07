@@ -24,7 +24,11 @@ export const Launch: FC<ILaunchProps> = ({ name, date, details, rocket }) => {
 				<Meta title={name} description={details ?? 'No details about this mission'} />
 				<Space size={[0, 8]} wrap style={{ paddingTop: 10 }}>
 					<Tag>{dateUtc}</Tag>
-					<Tag>{data?.name}</Tag>
+					<Tag>
+						<a href={data?.wikipedia} target='_blank'>
+							{data?.name}
+						</a>
+					</Tag>
 				</Space>
 			</Card>
 		</>
