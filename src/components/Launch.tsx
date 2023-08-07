@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Card, Carousel, Image, Space, Tag } from 'antd';
+import { Card, Space, Tag } from 'antd';
 import Meta from 'antd/es/card/Meta';
 import { useGetRocketQuery } from '../store';
 import { getShuffledItems } from '../utils/getters';
