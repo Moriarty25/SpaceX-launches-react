@@ -1,0 +1,65 @@
+@import '/src/styles/variables.scss';
+@import '/src//styles//mixins.scss';
+
+
+.app {
+  @include flexCenter;
+
+  flex-direction: column;
+  opacity: 0.9;
+  background-color: $background;
+  margin-top: 50px;
+  overflow: auto;
+  width: 80%;
+  margin: 10px auto;
+  border-radius: 12px;
+  border-color: transparent;
+  box-shadow: $boxShadow;
+  
+  &__header {
+    @include flexCenter;
+
+    flex-direction: column;
+    text-align: center;
+    border-bottom: 1px solid $border;
+    width: 100%;
+  }
+}
+  
+.launches {
+  @include flexCenter;
+
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 82vh;
+  width: 100%;
+  overflow: auto;
+  background-image: url('https://live.staticflickr.com/65535/52761309884_35983b78e5_k.jpg');
+  background-size: cover;
+
+}
+  
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+  
+*::-webkit-scrollbar-track {
+  background: $background-accent;
+}
+  
+*::-webkit-scrollbar-thumb {
+  background-color: $background-item;
+  border-radius: 10px;
+  border: 3px solid $background-accent;
+
+  &:hover {
+    background-color: $border;
+  }
+}

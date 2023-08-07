@@ -8,6 +8,7 @@ import { useScroll } from './hooks/useScroll';
 import { Launch } from './components/Launch';
 import { Loader } from './components/Loader';
 import { ILaunch } from './models/launchTypes';
+import './styles/App.scss';
 
 export const App = () => {
 	const [page, setPage] = useState(0);
