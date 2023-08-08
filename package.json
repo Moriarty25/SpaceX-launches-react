@@ -1,8 +1,8 @@
 {
-  "name": "my-webpack-project",
+  "name": "spacex-launches",
   "version": "1.0.0",
-  "description": "My webpack project",
-  "main": "index.js",
+  "description": "Shows all successful SpaceX launches for 2015-2019",
+  "main": "index.jsx",
   "scripts": {
     "test": "jest",
     "build": "webpack --mode=production --node-env=production",
@@ -23,6 +23,9 @@
     "url": "https://github.com/Moriarty25/SpaceX-launches-react/issues"
   },
   "homepage": "https://github.com/Moriarty25/SpaceX-launches-react#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "devDependencies": {
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-react": "^7.22.5",
