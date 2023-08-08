@@ -1,4 +1,3 @@
-
 export function getShuffledItems(item: string[]): string[] {
 	const shuffledItems = [...item];
 	for (let i = shuffledItems.length - 1; i > 0; i--) {
