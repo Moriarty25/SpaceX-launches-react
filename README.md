@@ -39,6 +39,7 @@ Launches the test runner  with Jest.
 * React
 * Redux Toolkit
 * RTK Query
+* Ant Design
 * Sass
 * Webpack
 * Jest
