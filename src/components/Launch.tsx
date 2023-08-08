@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { Card, Carousel, Image, Space, Tag } from 'antd';
-import Meta from 'antd/es/card/Meta';
+import { Card, Space, Tag } from 'antd';
 import { useGetRocketQuery } from '../store';
 import { getShuffledItems } from '../utils/getters';
 import { ILaunch } from 'src/models/launchTypes';
 import { Slider } from './Slider';
+const { Meta } = Card;
 
 interface ILaunchProps extends Omit<ILaunch, 'success' | 'date_utc' | 'id'> {
 	date: Date;
