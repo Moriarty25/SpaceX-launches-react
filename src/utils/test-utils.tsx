@@ -6,7 +6,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import type { PreloadedState } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 
-import type { RootState } from '../store'
+import { store, type RootState } from '../store'
 
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
@@ -33,3 +33,9 @@ export function renderWithProviders(
   // Return an object with the store and all of RTL's query functions
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) }
 }
+
+
+
+export const StoreProvider = ({ children }: { children?: React.ReactNode }) => (
+  <Provider store={store}>{children}</Provider>
+);
